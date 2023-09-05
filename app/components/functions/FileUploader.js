@@ -7,6 +7,7 @@ import api from 'api'
 function FileUploader() {
 
   const [file, setFile] = useState();
+  const [link, setLink] = useState();
 
   const handleFileChange = (event) => {
     if (event.target.files) {
@@ -24,12 +25,15 @@ function FileUploader() {
 
     fetch(api.baseUrl + '/files', {
       method: 'POST',
-      body: formData
-      
+      body: formData    
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => (
+        console.log(data),
+        setLink(data.link)
+        ))
       .catch(err => console.error(err));
+
   };
 
   return (
@@ -39,6 +43,7 @@ function FileUploader() {
       <div>{file && `${file.name} - ${file.type}`}</div>
 
       <button onClick={handleSubmit}>Upload</button>
+      <p>{link}</p>
     </div>
   );
 }
