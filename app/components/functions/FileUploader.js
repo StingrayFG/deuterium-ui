@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import api from '@/app/api';
+import api from 'api'
 
 function FileUploader() {
 
@@ -19,10 +19,13 @@ function FileUploader() {
       return;
     }
 
+    const formData = new FormData();
+    formData.append('file', file);
 
-    fetch(api.baseUrl + '/post', {
+    fetch(api.baseUrl + '/files', {
       method: 'POST',
-      body: file
+      body: formData
+      
     })
       .then(res => res.json())
       .then(data => console.log(data))
@@ -31,7 +34,7 @@ function FileUploader() {
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
+      <input type='file' onChange={handleFileChange} />
 
       <div>{file && `${file.name} - ${file.type}`}</div>
 
