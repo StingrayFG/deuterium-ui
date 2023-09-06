@@ -1,11 +1,7 @@
 import React from 'react';
 
-import FileUploader from './components/functions/FileUploader'
+import FileUploadPage from 'components/FileUploadPage'
 
 export default function Page() {
-  return (
-    <div>
-      <FileUploader/>
-    </div>
-  )
+  return <FileUploadPage />
 }
