@@ -13,15 +13,12 @@ export default function FilePage(props) {
 
   useEffect(() => {
     const getFile = async () => {
-      await fetch(api.baseUrl + '/file/' + props.slug, {
-        method: 'get' 
-      })
-      .then(res => res.json())
-      .then(data => {
+      await axios.get(api.baseUrl + '/file/' + props.slug)
+      .then(res => {
         setIsFetched(true)
-        setExists(data.exists);
-        if (data.exists) {
-          setFileName(data.fileName)
+        setExists(res.data.exists);
+        if (res.data.exists) {
+          setFileName(res.data.fileName)
         }
       })
       .catch(err => console.error(err));
