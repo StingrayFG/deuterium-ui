@@ -2,17 +2,17 @@
 
 import { useState } from 'react';
 
+import DropzoneComponent from './DropzoneComponent';
+
 import api from 'api'
 
 export default function FileUploadPage() {
 
   const [file, setFile] = useState();
-  const [link, setLink] = useState();
+  const [uuid, setuuid] = useState();
 
-  const handleFileChange = (event) => {
-    if (event.target.files) {
-      setFile(event.target.files[0]);
-    }
+  const handleChange = file => {
+    setFile(file);
   };
 
   const handleSubmit = async () => {
@@ -29,17 +29,16 @@ export default function FileUploadPage() {
     })
       .then(res => res.json())
       .then(data => (
-        setLink(data.link)
+        setuuid(data.uuid)
         ))
       .catch(err => console.error(err));
-
   };
 
-  if (!link) {
+  if (!uuid) {
     return (
       <div>
-        <input type='file' onChange={handleFileChange} />
-  
+        <DropzoneComponent handleChange={handleChange}/>
+
         <div>{file && `${file.name} - ${file.type}`}</div>
   
         <button onClick={handleSubmit}>Upload</button>
@@ -49,7 +48,7 @@ export default function FileUploadPage() {
     return (
       <div>
         <p>Your link:</p>
-        <p>{'http://localhost:3000/' + link}</p>
+        <p>{'http://localhost:3000/' + uuid}</p>
       </div>
     );
   }
