@@ -1,7 +1,15 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { LinearProgress } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 import FileLinkBox from './FileLinkBox';
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+}));
+
 
 function DropzoneComponent({handleChange, progress, fileName, fileSize, link}) {
   const onDrop = useCallback(acceptedFiles => {
@@ -18,7 +26,7 @@ function DropzoneComponent({handleChange, progress, fileName, fileSize, link}) {
 
   if (fileName) {
     return (
-      <div className='w-full h-80 mx-auto mt-8
+      <div className='w-full h-88 mx-auto mt-8 sliding-div
       bg-gray-900/50
       border-dashed border-2 border-sky-200 rounded-lg'>
         <div className='w-184 h-32 mx-auto mt-8 
@@ -27,13 +35,14 @@ function DropzoneComponent({handleChange, progress, fileName, fileSize, link}) {
           <input {...getInputProps()} />
           <p className='text-center mt-9 text-sky-400 font-sans text-4xl'>Select or drop files</p>
         </div>
-        <p className='text-center mt-5 text-sky-400 font-sans text-2xl'>{fileName} {fileSize}MB {(progress * 100).toFixed(0)}%</p>
+        <p className='text-center mt-6 text-sky-400 font-sans text-2xl'>{fileName} {fileSize}MB</p>
+        <BorderLinearProgress className='w-184 mx-auto mt-3 h-16' variant="determinate" value={progress * 100} />
         <FileLinkBox progress={progress} fileSize={fileSize} link={link}/>
       </div>
     ) 
   } else {
     return (
-      <div className='w-full h-48 mx-auto mt-8
+      <div className='w-full h-48 mx-auto mt-8 sliding-div
       bg-gray-900/50
       border-dashed border-2 border-sky-200 rounded-lg'>
         <div className='w-184 h-32 mx-auto mt-8
