@@ -3,14 +3,21 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link'
 
+import domain from '../../domain'
 import api from 'api'
 
 export default function FilePage({progress, fileSize, link}) {
 
   const [fileName, setFileName] = useState();
 
-  if (fileSize > 100)
-  {
+  if (!link){
+    return(
+      <div className='w-3/5 h-12 mx-auto mt-8
+        border-solid border-2 border-sky-700 rounded-lg'>
+        <p className='text-center mt-1 text-sky-200 font-sans text-2xl'>Something went wrong, try again later</p>
+      </div>  
+    )
+  } else if (fileSize > 100) {
     return(
       <div className='w-3/5 h-12 mx-auto mt-8
         border-solid border-2 border-sky-700 rounded-lg'>
@@ -21,7 +28,7 @@ export default function FilePage({progress, fileSize, link}) {
     return(
       <div className='w-3/5 h-12 mx-auto mt-8
         border-solid border-2 border-sky-700 rounded-lg'>
-        <p className='text-center mt-1 text-sky-200 font-sans text-2xl'>{link}</p>
+        <p className='text-center mt-1 text-sky-200 font-sans text-2xl'>{domain.default + '/' + link}</p>
       </div>  
     )
   } else {

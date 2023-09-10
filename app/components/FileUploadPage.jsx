@@ -54,7 +54,7 @@ export default function FileUploadPage() {
         <p className='text-sky-400 font-sans text-2xl text-center pt-48'>Files up to 100 MB are allowed</p>
         <DropzoneComponent handleChange={handleChange} progress={progress}
         fileName={path.parse(file.name).name.slice(0, 40) + path.parse(file.name).ext}
-        fileSize={(file.size/1000000).toFixed(1)} link={window.location.host + '/' + uuid}/>
+        fileSize={(file.size/1000000).toFixed(1)} link={uuid}/>
       </div> 
     );
   } else {
