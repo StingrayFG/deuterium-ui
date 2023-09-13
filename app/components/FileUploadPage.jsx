@@ -39,7 +39,7 @@ export default function FileUploadPage() {
     const formData = new FormData();
     formData.append('file', file);
 
-    await axios.post(api.baseUrl + '/file/upload', formData, {
+    await axios.post(api.baseUrl + '/upload', formData, {
       onUploadProgress: (progressEvent) => {
         const progress = (progressEvent.loaded / progressEvent.total);
         setProgress(progress);
