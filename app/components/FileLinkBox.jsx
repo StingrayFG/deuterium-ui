@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link'
 
-import domain from '../../domain'
 import api from 'api'
 
 export default function FilePage({progress, fileSize, link}) {
