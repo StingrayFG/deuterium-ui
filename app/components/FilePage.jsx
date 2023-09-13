@@ -12,6 +12,7 @@ export default function FilePage(props) {
   const [fileSize, setFileSize] = useState();
   const [exists, setExists] = useState();
   const [isFetched, setIsFetched] = useState();
+  const [isFailed, setIsFailed] = useState();
 
   useEffect(() => {
     const getFile = async () => {
@@ -24,7 +25,10 @@ export default function FilePage(props) {
           setFileSize(res.data.fileSize);
         }
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err)
+        setIsFailed(true)
+      });
     };
     getFile();
   })
@@ -59,6 +63,12 @@ export default function FilePage(props) {
         </div> 
       );
     }
+  } else if (isFailed){
+    return (
+      <div className='w-200 h-96 mx-auto'>
+        <p className='text-sky-400 font-sans text-2xl text-center pt-48'>Something went wrong</p>
+      </div> 
+    );
   }
   
 }
