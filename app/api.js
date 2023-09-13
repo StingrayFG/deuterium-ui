@@ -1,5 +1,5 @@
 export const api = {
-    baseUrl: 'http://localhost:3001'
+    baseUrl: (process.env.BACKEND_URL  || 'http://172.17.0.1:3001')
 }
 
 export default api;
