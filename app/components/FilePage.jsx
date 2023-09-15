@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link'
 
-import api from 'api'
-
 export default function FilePage(props) {
 
   const [fileName, setFileName] = useState();
@@ -16,7 +14,7 @@ export default function FilePage(props) {
 
   useEffect(() => {
     const getFile = async () => {
-      await axios.get(api.baseUrl + '/file/' + props.slug)
+      await axios.get(process.env.BACKEND_URL  + '/file/' + props.slug)
       .then(res => {
         setIsFetched(true)
         setExists(res.data.exists);
@@ -40,7 +38,7 @@ export default function FilePage(props) {
       return (
         <div className='w-200 h-96 mx-auto'>
           <p className='text-sky-400 font-sans text-2xl text-center pt-48'>{fileName} {fileSize}MB</p>
-          <Link href={api.baseUrl + '/file/' + props.slug + '/download'}>
+          <Link href={process.env.BACKEND_URL + '/file/' + props.slug + '/download'}>
             <div className='w-96 h-32 mx-auto mt-8 
               bg-gray-900 hover:bg-gray-800/75 active:bg-gray-700/75
               border-solid border-2 border-sky-700 rounded-lg'>

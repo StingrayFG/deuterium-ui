@@ -6,8 +6,6 @@ import path from 'path';
 
 import DropzoneComponent from './DropzoneComponent';
 
-import api from 'api'
-
 export default function FileUploadPage() {
 
   const [file, setFile] = useState();
@@ -39,7 +37,7 @@ export default function FileUploadPage() {
     const formData = new FormData();
     formData.append('file', file);
 
-    await axios.post(api.baseUrl + '/upload', formData, {
+    await axios.post(process.env.BACKEND_URL + '/upload', formData, {
       onUploadProgress: (progressEvent) => {
         const progress = (progressEvent.loaded / progressEvent.total);
         setProgress(progress);
