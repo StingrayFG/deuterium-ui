@@ -6,9 +6,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel='icon' href='/favicon.ico'/>
+        <link rel='icon' href='../images/favicon.ico'/>
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+      </body>
     </html>
   )
 }
