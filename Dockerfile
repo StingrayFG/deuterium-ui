@@ -15,6 +15,9 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED 1
+ENV BACKEND_URL backend
+ENV PORT 3000
+ENV NEXT_PUBLIC_DOMAIN http://localhost:8080
 
 RUN npm run build
 
@@ -30,8 +33,8 @@ COPY --from=builder /app/package.json ./package.json
 
 USER node
 
-EXPOSE 3000
-
 ENV PORT 3000
+
+EXPOSE ${PORT}
 
 CMD ["npm", "start"]
