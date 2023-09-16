@@ -37,7 +37,7 @@ export default function FileUploadPage() {
     const formData = new FormData();
     formData.append('file', file);
 
-    await axios.post(process.env.BACKEND_URL + '/upload', formData, {
+    await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + '/upload', formData, {
       onUploadProgress: (progressEvent) => {
         const progress = (progressEvent.loaded / progressEvent.total);
         setProgress(progress);
