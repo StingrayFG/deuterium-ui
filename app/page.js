@@ -9,11 +9,11 @@ import Link from 'next/link';
 
 export default function Page() {
   return (
-    <div className='bg-gradient-to-b from-black/75 via-transparent to-sky-500/75 h-screen'>
-      <Image src={deLogo} alt='logo' width={128} className='pl-4 inline-grid'/>
+    <div className='bg-gradient-to-b from-black/75 via-transparent to-sky-500/75 h-screen grid'>
+      <Image src={deLogo} alt='logo' className='absolute top-0 left-0 pl-4 w-16 md:w-24'/>
       <FileUploadPage /> 
       <Link href='https://github.com/StingrayFG/' className='absolute bottom-0 left-0 p-6'>
-        <Image src={githubMark} alt='github' width={80} />
+        <Image src={githubMark} alt='github' className='w-10 md:w-16' />
       </Link>
     </div>
   )

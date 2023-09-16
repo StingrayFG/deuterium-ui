@@ -23,33 +23,35 @@ function DropzoneComponent({handleChange, progress, fileName, fileSize, link}) {
   } = useDropzone({
     onDrop, multiple: false, noDragEventsBubbling: true
   });
-
+ 
   if (fileName) {
     return (
-      <div className='w-full h-88 mx-auto mt-8 sliding-div
+      <div className='w-full h-80 md:h-88 mx-auto mt-4 sliding-div self-center
       bg-gray-900/50
       border-dashed border-2 border-sky-200 rounded-lg'>
-        <div className='w-184 h-32 mx-auto mt-8 
+        <div className='w-11/12 h-24 md:h-32 mx-auto mt-8 grid
           bg-gray-900 hover:bg-gray-800/75 active:bg-gray-700/75
           border-solid border-2 border-sky-700 rounded-lg' {...getRootProps({role: 'button'})}>
           <input {...getInputProps()} />
-          <p className='text-center mt-9 text-sky-400 font-sans text-4xl'>Select or drop files</p>
+          <p className='text-center text-sky-400 font-sans text-2xl md:text-4xl place-self-center'>Select or drop files</p>
         </div>
-        <p className='text-center mt-6 text-sky-400 font-sans text-2xl'>{fileName} {fileSize}MB</p>
-        <BorderLinearProgress className='w-184 mx-auto mt-3 h-16' variant="determinate" value={progress * 100} />
-        <FileLinkBox progress={progress} fileSize={fileSize} link={link}/>
+        <div className='h-14 md:h-16 grid'>
+          <p className='pl-6 pr-6 mt-2 text-center align-middle text-sky-400 font-sans text-xl md:text-2xl self-center'>{fileName} {fileSize}MB</p>
+        </div>
+        <BorderLinearProgress className='w-11/12 mx-auto mt-5 mb-5 md:mt-3 md:mb-6 h-16' variant="determinate" value={progress * 100} />
+        <FileLinkBox fileSize={fileSize} link={link}/>
       </div>
     ) 
   } else {
     return (
-      <div className='w-full h-48 mx-auto mt-8 sliding-div
+      <div className='w-full h-40 md:h-48 mx-auto mt-4 sliding-div self-center
       bg-gray-900/50
       border-dashed border-2 border-sky-200 rounded-lg'>
-        <div className='w-184 h-32 mx-auto mt-8
+        <div className='w-11/12 h-24 md:h-32 mx-auto mt-8 grid
           bg-gray-900 hover:bg-gray-800/75 active:bg-gray-700/75
           border-solid border-2 border-sky-700 rounded-lg' {...getRootProps({role: 'button'})}>
           <input {...getInputProps()} />
-          <p className='text-center mt-9 text-sky-400 font-sans text-4xl'>Select or drop files</p>
+          <p className='text-center text-sky-400 font-sans text-2xl md:text-4xl place-self-center'>Select or drop files</p>
         </div>
       </div>
     )

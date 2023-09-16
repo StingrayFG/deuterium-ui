@@ -48,8 +48,8 @@ export default function FileUploadPage() {
 
   if (file) {
     return (
-      <div className='w-200 h-96 mx-auto'>
-        <p className='text-sky-400 font-sans text-2xl text-center pt-48'>Files up to 100 MB are allowed</p>
+      <div className='w-11/12 md:w-[50rem] h-96 mx-auto mb-12 md:mb-36 place-self-center'>
+        <p className='text-sky-400 font-sans text-center text-xl md:text-2xl'>Files up to 100 MB are allowed</p>
         <DropzoneComponent handleChange={handleChange} progress={progress}
         fileName={path.parse(file.name).name.slice(0, 40) + path.parse(file.name).ext}
         fileSize={(file.size/(1024 * 1024)).toFixed(1)} link={uuid}/>
@@ -57,8 +57,8 @@ export default function FileUploadPage() {
     );
   } else {
     return (
-      <div className='w-200 h-96 mx-auto'>
-        <p className='text-sky-400 font-sans text-2xl text-center pt-48'>Files up to 100 MB are allowed</p>
+      <div className='w-11/12 md:w-[50rem] h-96 mx-auto mb-12 md:mb-36 place-self-center'>
+        <p className='text-sky-400 font-sans text-center text-xl md:text-2xl'>Files up to 100 MB are allowed</p>
         <DropzoneComponent handleChange={handleChange} />
       </div> 
     );
