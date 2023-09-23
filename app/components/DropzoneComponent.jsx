@@ -10,8 +10,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   borderRadius: 5,
 }));
 
-
-function DropzoneComponent({handleChange, progress, fileName, fileSize, link}) {
+function DropzoneComponent({handleChange, progress, isFailed, fileName, fileSize, link}) {
   const onDrop = useCallback(acceptedFiles => {
     console.log(acceptedFiles);
     handleChange(acceptedFiles[0])
@@ -39,7 +38,7 @@ function DropzoneComponent({handleChange, progress, fileName, fileSize, link}) {
           <p className='pl-6 pr-6 mt-2 text-center align-middle text-sky-400 font-sans text-xl md:text-2xl self-center'>{fileName} {fileSize}MB</p>
         </div>
         <BorderLinearProgress className='w-11/12 mx-auto mt-5 mb-5 md:mt-3 md:mb-6 h-16' variant="determinate" value={progress * 100} />
-        <FileLinkBox fileSize={fileSize} link={link}/>
+        <FileLinkBox fileSize={fileSize} link={link} isFailed={isFailed}/>
       </div>
     ) 
   } else {
