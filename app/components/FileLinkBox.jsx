@@ -22,18 +22,18 @@ export default function FilePage({fileSize, link, isFailed}) {
         <p className='text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center'>Something went wrong</p> 
       </div>  
     )
-  } else if (!link) {
-    return(
-      <div className='w-11/12 md:w-3/5 h-12 mx-auto mt-0 grid 
-        border-solid border-2 border-sky-700 rounded-lg'>
-        <p className='text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center'>...</p> 
-      </div>  
-    )
   } else if (fileSize > 100) {
     return(
       <div className='w-11/12 md:w-3/5 h-12 mx-auto mt-0 grid 
         border-solid border-2 border-sky-700 rounded-lg'>
         <p className='text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center'>File is too large</p>
+      </div>  
+    )
+  } else if (!link) {
+    return(
+      <div className='w-11/12 md:w-3/5 h-12 mx-auto mt-0 grid 
+        border-solid border-2 border-sky-700 rounded-lg'>
+        <p className='text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center'>...</p> 
       </div>  
     )
   } else if (fileSize < 100) {
