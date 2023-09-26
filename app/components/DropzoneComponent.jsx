@@ -37,7 +37,15 @@ function DropzoneComponent({handleChange, progress, isFailed, fileName, fileSize
         <div className='h-14 md:h-16 grid'>
           <p className='pl-6 pr-6 mt-2 text-center align-middle text-sky-400 font-sans text-xl md:text-2xl self-center'>{fileName} {fileSize}MB</p>
         </div>
-        <BorderLinearProgress className='w-11/12 mx-auto mt-5 mb-5 md:mt-3 md:mb-6 h-16' variant="determinate" value={progress * 100} />
+        <BorderLinearProgress className='w-11/12 mx-auto mt-5 mb-5 md:mt-3 md:mb-6 h-16'
+          sx={{
+            '&[aria-valuenow="0"]': {
+              '& .MuiLinearProgress-bar': {
+                transition: 'none'
+              }
+            }
+          }}
+          variant="determinate" value={progress * 100} />
         <FileLinkBox fileSize={fileSize} link={link} isFailed={isFailed}/>
       </div>
     ) 

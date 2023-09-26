@@ -24,6 +24,7 @@ export default function FileUploadPage() {
 
   const handleChange = (file) => {
     setFile(file);
+    setUuid(undefined);
     if (file.size < (1000000 * 100)) {
       setRequiresUpload(true);
     } else {
@@ -63,7 +64,7 @@ export default function FileUploadPage() {
     return (
       <div className='w-11/12 md:w-[50rem] h-96 mx-auto mb-12 md:mb-36 place-self-center'>
         <p className='text-sky-400 font-sans text-center text-xl md:text-2xl'>Files up to 100 MB are allowed</p>
-        <DropzoneComponent handleChange={handleChange} />
+        <DropzoneComponent handleChange={handleChange} progress={progress} isFailed={isFailed} link={uuid}/>
       </div> 
     );
   }
