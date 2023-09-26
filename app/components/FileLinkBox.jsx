@@ -13,7 +13,7 @@ export default function FilePage({fileSize, link, isFailed}) {
     setFade(true);
     await delay(2000);
     setFade(false);
-  }
+  };
 
   if (isFailed) {
     return(

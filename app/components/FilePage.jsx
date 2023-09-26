@@ -29,7 +29,7 @@ export default function FilePage(props) {
       });
     };
     getFile();
-  })
+  });
 
   if (isFetched === true)
   {
