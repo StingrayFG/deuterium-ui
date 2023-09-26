@@ -33,7 +33,14 @@ export default function FilePage({fileSize, link, isFailed}) {
     return(
       <div className='w-11/12 md:w-3/5 h-12 mx-auto mt-0 grid 
         border-solid border-2 border-sky-700 rounded-lg'>
-        <p className='text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center'>...</p> 
+        <div className="h-10 w-10 animate-spin place-self-center absolute grid">
+          <div className="h-5 w-5 mr-4  place-self-center absolute
+            rounded-full border-dotted border-2 border-sky-white rounded-full">
+          </div>
+          <div className="h-5 w-5 ml-4 place-self-center absolute
+            bg-white rounded-full">
+          </div>
+        </div>
       </div>  
     )
   } else if (fileSize < 100) {
