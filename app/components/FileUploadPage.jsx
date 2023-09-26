@@ -20,7 +20,7 @@ export default function FileUploadPage() {
       handleSubmit();
       setRequiresUpload(false);
     }
-  })
+  });
 
   const handleChange = (file) => {
     setFile(file);
@@ -29,6 +29,16 @@ export default function FileUploadPage() {
       setRequiresUpload(true);
     } else {
       setProgress(0);
+    }
+  };
+
+  const sliceFileName = (fileName) => {
+    const len = path.parse(fileName).name.length;
+    if (len > 40) {
+      return path.parse(file.name).name.slice(0, 32) + '...' + 
+      path.parse(fileName).name.slice(len - 5, len) +  path.parse(file.name).ext;
+    } else {
+      return fileName;
     }
   };
 
@@ -56,8 +66,7 @@ export default function FileUploadPage() {
       <div className='w-11/12 md:w-[50rem] h-96 mx-auto mb-12 md:mb-36 place-self-center'>
         <p className='text-sky-400 font-sans text-center text-xl md:text-2xl'>Files up to 100 MB are allowed</p>
         <DropzoneComponent handleChange={handleChange} progress={progress} isFailed={isFailed}
-        fileName={path.parse(file.name).name.slice(0, 40) + path.parse(file.name).ext}
-        fileSize={(file.size/(1024 * 1024)).toFixed(1)} link={uuid}/>
+        fileName={sliceFileName(file.name)} fileSize={(file.size/(1024 * 1024)).toFixed(1)} link={uuid}/>
       </div> 
     );
   } else {
