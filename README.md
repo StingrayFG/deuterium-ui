@@ -1,15 +1,18 @@
 # Deuterium UI
+
 Deuterium is a simple file sharing project built with NodeJS.
 
 # Features
-Uploading without registration
+
+One click uploading
 
 Drag & drop supported
 
+Direct download links
+
 A minimal web interface
 
-#
-Frontend and backend are divided into two separate projects. 
+# Configuration
 
-The backend repository can be found here: https://github.com/StingrayFG/deuterium.
+Full description, installation and configuration can be found in the main repository: https://github.com/StingrayFG/deuterium
 
