@@ -9,7 +9,7 @@ export default function FilePage({fileSize, link, isFailed}) {
   const delay = ms => new Promise(res => setTimeout(res, ms));
 
   const copyLink = async () => {
-    navigator.clipboard.writeText(process.env.NEXT_PUBLIC_DOMAIN + '/' + link)
+    navigator.clipboard.writeText('https://' + process.env.NEXT_PUBLIC_DOMAIN + '/' + link)
     setFade(true);
     await delay(2000);
     setFade(false);
