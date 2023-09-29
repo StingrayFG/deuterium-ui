@@ -16,5 +16,5 @@ A minimal web interface
 
 #
 
-Full description, installation and configuration can be found in the main repository and wiki: https://github.com/StingrayFG/deuterium
+Full description, installation and configuration can be found in the main repository's wiki: https://github.com/StingrayFG/deuterium/wiki
 
