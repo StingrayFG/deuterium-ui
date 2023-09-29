@@ -1,6 +1,8 @@
 # Deuterium UI
 
-Deuterium is a simple file sharing project built with NodeJS.
+Deuterium is a simple file sharing project built with NextJS, Tailwind, Prisma, Express, PostgreSQL.
+
+This is a repository for the frontend part of Deuterium project.
 
 # Features
 
