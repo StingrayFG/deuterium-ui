@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image'
+import Link from 'next/link';
 
 import FilePage from 'components/FilePage'
 
 import githubMark from '../../images/github-mark-white.png';
 import Logo from '../../images/logo-white.png';
-import Link from 'next/link';
 
 export default function Page({ params }) {
   return (
