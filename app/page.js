@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 import FileUploadPage from 'components/FileUploadPage'
 
-import githubMark from '../images/github-mark-white.png';
-import Logo from '../images/logo-white.png';
+import githubMark from '/images/github-mark-white.png';
+import Logo from '/images/logo-white.png';
 
 export default function Page() {
   return (
