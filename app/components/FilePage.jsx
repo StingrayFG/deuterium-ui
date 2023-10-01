@@ -15,7 +15,7 @@ export default function FilePage(props) {
     const getFile = async () => {
       await axios.get(process.env.NEXT_PUBLIC_BACKEND_URL  + '/file/' + props.slug)
       .then(res => {
-        setFileData(res.data);
+        setFileData(res.data.fileData);
       })
       .catch(err => {
         console.error(err)
