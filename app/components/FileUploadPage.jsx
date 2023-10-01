@@ -9,7 +9,8 @@ import DropzoneComponent from './DropzoneComponent';
 export default function FileUploadPage() {
 
   const [file, setFile] = useState();
-  const [uuid, setUuid] = useState();
+  const [fileUuid, setFileUuid] = useState();
+
   const [requiresUpload, setRequiresUpload] = useState();
   const [progress, setProgress] = useState(0);
   const [isFailed, setIsFailed] = useState();
@@ -24,7 +25,7 @@ export default function FileUploadPage() {
 
   const handleChange = (file) => {
     setFile(file);
-    setUuid(undefined);
+    setFileUuid(undefined);
     if (file.size < (1000000 * 100)) {
       setRequiresUpload(true);
     } else {
@@ -54,7 +55,7 @@ export default function FileUploadPage() {
         const progress = (progressEvent.loaded / progressEvent.total);
         setProgress(progress);
       }})
-      .then(res => setUuid(res.data.uuid))
+      .then(res => setFileUuid(res.data.fileUuid))
       .catch(err => {
         setIsFailed(true);
         console.error(err);
@@ -63,17 +64,17 @@ export default function FileUploadPage() {
 
   if (file) {
     return (
-      <div className='w-11/12 md:w-[50rem] h-96 mx-auto mb-12 md:mb-36 place-self-center'>
-        <p className='text-sky-400 font-sans text-center text-xl md:text-2xl'>Files up to 100 MB are allowed</p>
+      <div className='w-11/12 md:w-[50rem] h-auto mx-auto mb-12 md:mb-36 place-self-center'>
+        <p className='h-12 text-sky-400 font-sans text-center text-xl md:text-2xl'>Files up to 100 MB are allowed</p>
         <DropzoneComponent handleChange={handleChange} progress={progress} isFailed={isFailed}
-        fileName={sliceFileName(file.name)} fileSize={(file.size/(1024 * 1024)).toFixed(1)} link={uuid}/>
+        fileName={sliceFileName(file.name)} fileSize={(file.size/(1024 * 1024)).toFixed(1)} fileUuid={fileUuid}/>
       </div> 
     );
   } else {
     return (
-      <div className='w-11/12 md:w-[50rem] h-96 mx-auto mb-12 md:mb-36 place-self-center'>
-        <p className='text-sky-400 font-sans text-center text-xl md:text-2xl'>Files up to 100 MB are allowed</p>
-        <DropzoneComponent handleChange={handleChange} progress={progress} isFailed={isFailed} link={uuid}/>
+      <div className='w-11/12 md:w-[50rem] h-auto mx-auto mb-12 md:mb-36 place-self-center'>
+        <p className='h-12 text-sky-400 font-sans text-center text-xl md:text-2xl'>Files up to 100 MB are allowed</p>
+        <DropzoneComponent handleChange={handleChange} progress={progress} isFailed={isFailed} fileUuid={fileUuid}/>
       </div> 
     );
   }

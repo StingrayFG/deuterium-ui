@@ -10,7 +10,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   borderRadius: 5,
 }));
 
-function DropzoneComponent({handleChange, progress, isFailed, fileName, fileSize, link}) {
+function DropzoneComponent({ handleChange, progress, isFailed, fileName, fileSize, fileUuid }) {
   const onDrop = useCallback(acceptedFiles => {
     console.log(acceptedFiles);
     handleChange(acceptedFiles[0])
@@ -25,9 +25,9 @@ function DropzoneComponent({handleChange, progress, isFailed, fileName, fileSize
  
   if (fileName) {
     return (
-      <div className='w-full h-80 md:h-88 mx-auto mt-4 sliding-div self-center
-      bg-gray-900/50
-      border-dashed border-2 border-sky-200 rounded-lg'>
+      <div className='w-full h-80 md:h-88 mx-auto self-center sliding-div
+        bg-gray-900/50
+        border-dashed border-2 border-sky-200 rounded-lg'>
         <div className='w-11/12 h-24 md:h-32 mx-auto mt-8 grid
           bg-gray-900 hover:bg-gray-800/75 active:bg-gray-700/75
           border-solid border-2 border-sky-700 rounded-lg' {...getRootProps({role: 'button'})}>
@@ -46,14 +46,14 @@ function DropzoneComponent({handleChange, progress, isFailed, fileName, fileSize
             }
           }}
           variant="determinate" value={progress * 100} />
-        <FileLinkBox fileSize={fileSize} link={link} isFailed={isFailed}/>
+        <FileLinkBox isFailed={isFailed} fileSize={fileSize} fileUuid={fileUuid}/>
       </div>
     ) 
   } else {
     return (
-      <div className='w-full h-40 md:h-48 mx-auto mt-4 sliding-div self-center
-      bg-gray-900/50
-      border-dashed border-2 border-sky-200 rounded-lg'>
+      <div className='w-full h-40 md:h-48 mx-auto self-center sliding-div
+        bg-gray-900/50
+        border-dashed border-2 border-sky-200 rounded-lg'>
         <div className='w-11/12 h-24 md:h-32 mx-auto mt-8 grid
           bg-gray-900 hover:bg-gray-800/75 active:bg-gray-700/75
           border-solid border-2 border-sky-700 rounded-lg' {...getRootProps({role: 'button'})}>
