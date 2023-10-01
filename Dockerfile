@@ -16,7 +16,7 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV NEXT_PUBLIC_BACKEND_URL backend
-ENV NEXT_PUBLIC_PORT 3000
+ENV PORT 3000
 ENV NEXT_PUBLIC_DOMAIN h2cloud.space
 
 RUN npm run build
@@ -32,8 +32,6 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
 USER node
-
-ENV PORT 3000
 
 EXPOSE ${PORT}
 
