@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 
@@ -15,7 +15,7 @@ export default function HashSumBox({ hashSum }) {
     setFade(false);
   };
 
-  return(
+  return (
     <div onClick={copyHashSum} className='w-11/12 md:w-8/12 h-20 md:h-12 mt-4 mb-8 mx-auto grid
       hover:bg-gray-800/50 active:bg-gray-700/50
       border-solid border-2 border-sky-700 rounded-lg'>

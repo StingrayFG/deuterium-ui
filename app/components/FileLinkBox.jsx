@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 
@@ -16,21 +16,21 @@ export default function FileLinkBox({ isFailed, fileData }) {
   };
 
   if (isFailed) {
-    return(
+    return (
       <div className='w-11/12 md:w-8/12 h-12 mx-auto mt-6 mb-8 grid
         border-solid border-2 border-sky-700 rounded-lg'>
         <p className='text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center'>Something went wrong</p> 
       </div>  
     )
   } else if (fileData.setFadeize > 100) {
-    return(
+    return (
       <div className='w-11/12 md:w-8/12 h-12 mx-auto mt-6 mb-8 grid 
         border-solid border-2 border-sky-700 rounded-lg'>
         <p className='text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center'>File is too large</p>
       </div>  
     )
   } else if (!fileData.uuid) {
-    return(
+    return (
       <div className='w-11/12 md:w-8/12 h-12 mx-auto mt-6 mb-8 grid 
         border-solid border-2 border-sky-700 rounded-lg'>
         <div className="h-10 w-10 animate-spin place-self-center absolute grid">
