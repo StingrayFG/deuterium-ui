@@ -33,7 +33,6 @@ export default function FilePage(props) {
     {
       return (
         <div className='w-11/12 md:w-[50rem] h-auto mx-auto mb-12 md:mb-36 place-self-center'>
-          <p className='h-12 text-sky-400 font-sans text-center text-xl md:text-2xl'>Files up to 100 MB are allowed</p>
           <div className='w-full h-auto mx-auto sliding-div self-center
             bg-gray-900/50
             border-dashed border-2 border-sky-200 rounded-lg'>
