@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import path from 'path';
 import Link from 'next/link'
 
 import HashSumBox from './HashSumBox';
@@ -10,6 +11,16 @@ export default function FilePage(props) {
 
   const [fileData, setFileData] = useState();
   const [isFailed, setIsFailed] = useState();
+
+  const truncateFileName = (fileName) => {
+    const len = path.parse(fileName).name.length;
+    if (len > 40) {
+      return path.parse(fileName).name.slice(0, 32) + '...' + 
+      path.parse(fileName).name.slice(len - 5, len) +  path.parse(fileName).ext;
+    } else {
+      return fileName;
+    }
+  };
 
   useEffect(() => {
     const getFile = async () => {
@@ -32,7 +43,7 @@ export default function FilePage(props) {
     if (fileData.exists === true)
     {
       return (
-        <div className='w-11/12 md:w-[50rem] h-auto mx-auto mb-12 md:mb-36 place-self-center'>
+        <div className='w-11/12 md:w-[50rem] h-auto mx-auto mb-36 md:mb-36 place-self-center'>
           <div className='w-full h-auto mx-auto sliding-div self-center
             bg-gray-900/50
             border-dashed border-2 border-sky-200 rounded-lg'>
@@ -44,7 +55,7 @@ export default function FilePage(props) {
               </div>
             </Link>
             <div className='h-14 md:h-16 grid'>
-              <p className='pl-6 pr-6 mt-2 text-center align-middle text-sky-400 font-sans text-xl md:text-2xl self-center'>{fileData.name} {fileData.size}MB</p>
+              <p className='pl-6 pr-6 mt-2 text-center align-middle text-sky-400 font-sans text-xl md:text-2xl self-center'>{truncateFileName(fileData.name)} {fileData.size}MB</p>
             </div>
             <HashSumBox hashSum={fileData.hashSum}/>
           </div>
@@ -52,14 +63,14 @@ export default function FilePage(props) {
       );
     } else {
       return (
-        <div className='w-11/12 md:w-[50rem] h-auto mx-auto place-self-center'>
+        <div className='w-11/12 md:w-[50rem] h-auto mx-auto mb-36 md:mb-36 place-self-center'>
           <p className='text-sky-400 font-sans text-2xl text-center'>File does not exist</p>
         </div> 
       );
     }
   } else if (isFailed) {
     return (
-      <div className='w-11/12 md:w-[50rem] h-auto mx-auto place-self-center'>
+      <div className='w-11/12 md:w-[50rem] h-auto mx-auto mb-36 md:mb-36 place-self-center'>
         <p className='text-sky-400 font-sans text-2xl text-center'>Something went wrong</p>
       </div> 
     );
