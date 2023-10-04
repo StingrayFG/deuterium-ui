@@ -38,7 +38,7 @@ export default function FilePage(props) {
             border-dashed border-2 border-sky-200 rounded-lg'>
             <Link href={process.env.NEXT_PUBLIC_BACKEND_URL + '/file/' + props.slug + '/download'}>
               <div className='w-11/12 h-24 md:h-32 mx-auto mt-8 grid
-                bg-gray-900 hover:bg-gray-800/75 active:bg-gray-700/75
+                bg-gray-900 hover:bg-gray-800 active:bg-gray-700
                 border-solid border-2 border-sky-700 rounded-lg'>
                 <p className='text-center text-sky-400 font-sans text-2xl md:text-4xl place-self-center'>Download</p>
               </div>
