@@ -22,7 +22,7 @@ export default function FileLinkBox({ isFailed, fileData }) {
         <p className='text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center'>Something went wrong</p> 
       </div>  
     )
-  } else if (fileData.setFadeize > 100) {
+  } else if (fileData.size > 100) {
     return (
       <div className='w-11/12 md:w-8/12 h-12 mx-auto mt-6 mb-8 grid 
         border-solid border-2 border-sky-700 rounded-lg'>
@@ -49,11 +49,11 @@ export default function FileLinkBox({ isFailed, fileData }) {
         hover:bg-gray-800/50 active:bg-gray-700/50
         border-solid border-2 border-sky-700 rounded-lg'>
         <p className={`text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center 
-          transition-all duration-250 ${fade ? "opacity-0" : "opacity-100"}`}>
+          transition-all duration-250 ${fade ? 'opacity-0' : 'opacity-100'}`}>
           {process.env.NEXT_PUBLIC_DOMAIN + '/' + fileData.uuid}
         </p>
         <p className={`text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center absolute
-          transition-all duration-250 ${fade ? "opacity-100" : "opacity-0"}`}>
+          transition-all duration-250 ${fade ? 'opacity-100' : 'opacity-0'}`}>
           Copied!
         </p> 
       </div>  
