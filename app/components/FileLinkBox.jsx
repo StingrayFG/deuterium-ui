@@ -33,12 +33,12 @@ export default function FileLinkBox({ isFailed, fileData }) {
     return (
       <div className='w-11/12 md:w-8/12 h-12 mx-auto mt-6 mb-8 grid 
         border-solid border-2 border-sky-700 rounded-lg'>
-        <div className="h-10 w-10 animate-spin place-self-center absolute grid">
-          <div className="h-5 w-5 mr-4 place-self-center absolute
-            rounded-full border-dotted border-2 border-sky-white rounded-full">
+        <div className='h-9 w-9 place-self-center grid grid-cols-1 grid-rows-1 animate-spin'>
+          <div className='h-5 w-5 mt-1 place-self-center
+            border-dotted border-2 border-sky-white rounded-full'>
           </div>
-          <div className="h-5 w-5 ml-4 place-self-center absolute
-            bg-white rounded-full">
+          <div className='h-5 w-5 relative place-self-center
+            bg-white rounded-full'>
           </div>
         </div>
       </div>  
