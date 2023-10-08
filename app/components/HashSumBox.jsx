@@ -4,15 +4,15 @@ import { useState } from 'react';
 
 export default function HashSumBox({ hashSum }) {
 
-  const [fade, setFade] = useState();
+  const [showCopied, setShowCopied] = useState();
 
   const delay = ms => new Promise(res => setTimeout(res, ms));
 
   const copyHashSum = async () => {
     navigator.clipboard.writeText(hashSum)
-    setFade(true);
+    setShowCopied(true);
     await delay(1500);
-    setFade(false);
+    setShowCopied(false);
   };
 
   return (
@@ -20,11 +20,11 @@ export default function HashSumBox({ hashSum }) {
       hover:bg-gray-800/50 active:bg-gray-700/50
       border-solid border-2 border-sky-700 rounded-lg'>
       <p className={`text-center text-sky-200 font-sans text-xl md:text-2xl ml-4 mr-4 place-self-center break-all
-        transition-all duration-250 ${fade ? "opacity-0" : "opacity-100"}`}>
+        transition-all duration-250 ${showCopied ? "opacity-0" : "opacity-100"}`}>
         md5: {hashSum}
       </p>
       <p className={`text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center absolute
-        transition-all duration-250 ${fade ? "opacity-100" : "opacity-0"}`}>
+        transition-all duration-250 ${showCopied ? "opacity-100" : "opacity-0"}`}>
         Copied!
       </p> 
     </div>  

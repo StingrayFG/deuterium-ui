@@ -16,7 +16,7 @@ export default function FileUploadPage() {
   const [isFailed, setIsFailed] = useState();
 
   useEffect(() => {
-    if (requiresUpload === true)
+    if (requiresUpload)
     {
       handleSubmit();
       setRequiresUpload(false);
