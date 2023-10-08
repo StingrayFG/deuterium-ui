@@ -54,6 +54,7 @@ export default function FileUploadPage() {
       onUploadProgress: (progressEvent) => {
         const progress = (progressEvent.loaded / progressEvent.total);
         setProgress(progress);
+        setIsFailed(false);
       }})
       .then(res => setFileUuid(res.data.fileUuid))
       .catch(err => {
