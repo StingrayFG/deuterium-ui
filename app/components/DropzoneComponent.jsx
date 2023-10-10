@@ -11,6 +11,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 function DropzoneComponent({ handleChange, progress, isFailed, fileData }) {
+  
   const onDrop = useCallback(acceptedFiles => {
     console.log(acceptedFiles);
     handleChange(acceptedFiles[0])
