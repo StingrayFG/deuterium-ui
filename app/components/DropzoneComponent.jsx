@@ -5,26 +5,26 @@ import { styled } from '@mui/material/styles';
 
 import FileLinkBox from './FileLinkBox';
 
-const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({ // Customize the upload progress bar
   height: 10,
   borderRadius: 5,
 }));
 
 function DropzoneComponent({ handleChange, progress, isFailed, fileData }) {
   
-  const onDrop = useCallback(acceptedFiles => {
+  const onDrop = useCallback(acceptedFiles => { // Pass the selected file to FileUploadPage for further checks & upload
     console.log(acceptedFiles);
     handleChange(acceptedFiles[0])
   }, []);
 
-  const {
+  const { // Dropzone setup
     getRootProps,
     getInputProps
   } = useDropzone({
     onDrop, multiple: false, noDragEventsBubbling: true
   });
  
-  if (fileData.name) {
+  if (fileData.name) { // Render the selected file's name and size
     return (
       <div className='w-full h-80 md:h-88 mx-auto self-center sliding-div
         bg-gray-900/50
@@ -50,7 +50,7 @@ function DropzoneComponent({ handleChange, progress, isFailed, fileData }) {
         <FileLinkBox isFailed={isFailed} fileData={fileData}/>
       </div>
     ) 
-  } else {
+  } else { // Default dropzone style
     return (
       <div className='w-full h-40 md:h-48 mx-auto self-center sliding-div
         bg-gray-900/50

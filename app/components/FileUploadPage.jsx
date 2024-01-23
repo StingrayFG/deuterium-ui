@@ -23,7 +23,7 @@ export default function FileUploadPage() {
     }
   });
 
-  const handleChange = (file) => {
+  const handleChange = (file) => { // Handle the file change
     setFile(file);
     setFileUuid(undefined);
     if (file.size < (1024 * 1024 * 100)) {
@@ -33,7 +33,7 @@ export default function FileUploadPage() {
     }
   };
 
-  const truncateFileName = (fileName) => {
+  const truncateFileName = (fileName) => { // Truncate the file name to avoid the text overflow
     const len = path.parse(fileName).name.length;
     if (len > 40) {
       return path.parse(fileName).name.slice(0, 32) + '...' + 
@@ -43,7 +43,7 @@ export default function FileUploadPage() {
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async () => { // Upload the file to backend
     if (!file) {
       return;
     }

@@ -8,28 +8,28 @@ export default function FileLinkBox({ isFailed, fileData }) {
 
   const delay = ms => new Promise(res => setTimeout(res, ms));
 
-  const copyLink = async () => {
+  const copyLink = async () => { // Handle message popping up animation
     navigator.clipboard.writeText('https://' + process.env.NEXT_PUBLIC_DOMAIN + '/' + fileData.uuid)
     setShowCopied(true);
     await delay(1500);
     setShowCopied(false);
   };
 
-  if (isFailed) {
+  if (isFailed) { // In case the file upload failed
     return (
       <div className='w-11/12 md:w-8/12 h-12 mx-auto mt-6 mb-8 grid
         border-solid border-2 border-sky-700 rounded-lg'>
         <p className='text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center'>Something went wrong</p> 
       </div>  
     )
-  } else if (fileData.size > 100) {
+  } else if (fileData.size > 100) { // In case the file is too large
     return (
       <div className='w-11/12 md:w-8/12 h-12 mx-auto mt-6 mb-8 grid 
         border-solid border-2 border-sky-700 rounded-lg'>
         <p className='text-center text-sky-200 font-sans text-xl md:text-2xl place-self-center'>File is too large</p>
       </div>  
     )
-  } else if (!fileData.uuid) {
+  } else if (!fileData.uuid) { // In case the file is in the process of uploadig
     return (
       <div className='w-11/12 md:w-8/12 h-12 mx-auto mt-6 mb-8 grid 
         border-solid border-2 border-sky-700 rounded-lg'>
@@ -43,7 +43,7 @@ export default function FileLinkBox({ isFailed, fileData }) {
         </div>
       </div>  
     )
-  } else if (fileData.size < 100) {
+  } else if (fileData.size < 100) { // in case the file has been uploaded succesfully
     return(
       <div onClick={copyLink} className='w-11/12 md:w-8/12 h-12 mx-auto mt-6 mb-8 grid 
         hover:bg-gray-800/50 active:bg-gray-700/50

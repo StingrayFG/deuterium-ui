@@ -8,7 +8,7 @@ export default function HashSumBox({ hashSum }) {
 
   const delay = ms => new Promise(res => setTimeout(res, ms));
 
-  const copyHashSum = async () => {
+  const copyHashSum = async () => { // Handle message popping up animation
     navigator.clipboard.writeText(hashSum)
     setShowCopied(true);
     await delay(1500);

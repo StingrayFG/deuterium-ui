@@ -12,7 +12,7 @@ export default function FilePage(props) {
   const [fileData, setFileData] = useState();
   const [isFailed, setIsFailed] = useState();
 
-  const truncateFileName = (fileName) => {
+  const truncateFileName = (fileName) => { // Truncate the file name to avoid the text overflow
     const len = path.parse(fileName).name.length;
     if (len > 40) {
       return path.parse(fileName).name.slice(0, 32) + '...' + 
@@ -22,7 +22,7 @@ export default function FilePage(props) {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { // Make a file request to backend by its uuid specified in the url
     const getFile = async () => {
       await axios.get(process.env.NEXT_PUBLIC_BACKEND_URL  + '/file/' + props.slug)
       .then(res => {
@@ -40,7 +40,7 @@ export default function FilePage(props) {
 
   if (fileData)
   {
-    if (fileData.exists === true)
+    if (fileData.exists === true) // If file has been found
     {
       return (
         <div className='w-11/12 md:w-[50rem] h-auto mx-auto mb-36 md:mb-36 place-self-center'>
@@ -61,14 +61,14 @@ export default function FilePage(props) {
           </div>
         </div> 
       );
-    } else {
-      return (
+    } else { // If file has not been found
+      return ( 
         <div className='w-11/12 md:w-[50rem] h-auto mx-auto mb-36 md:mb-36 place-self-center'>
           <p className='text-sky-400 font-sans text-2xl text-center'>File does not exist</p>
         </div> 
       );
     }
-  } else if (isFailed) {
+  } else if (isFailed) { // In case backend failed to respond
     return (
       <div className='w-11/12 md:w-[50rem] h-auto mx-auto mb-36 md:mb-36 place-self-center'>
         <p className='text-sky-400 font-sans text-2xl text-center'>Something went wrong</p>
