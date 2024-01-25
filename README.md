@@ -3,7 +3,7 @@
 Deuterium is a simple file sharing project built with NextJS, Tailwind, Prisma, Express, PostgreSQL.
 
 ### Real world example
-See the real world example at https://h2cloud.space
+See the real world example at https://h2.muoniumdrive.com/
 
 This is a repository for the frontend part of Deuterium project.
 
